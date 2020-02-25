@@ -139,7 +139,7 @@ function get3rdCar(inventory) {
 
 /**
  * ### Challenge `getCarInfoByIndex`
- * 
+ *   
  * @instructions
  * getCarInfoByIndex takes two arguments:
  *     (1) an array which is an inventory of cars like the preview above (see ⭐️ Preview Test Data ⭐️)
@@ -166,14 +166,13 @@ function getCarInfoByIndex(inventory, index) {
  * it will return `This is a Lincoln Town Car`.
 */
 function getLastCarInfo(inventory) {
-  const  car= inventory[inventory.length]
+  const  car= inventory[inventory.length -1]
   return `This is a ${car.car_make} ${car.car_model}`
   /* code here */
 }
 
 /**
  * ### Challenge `getCarInfoById`
- * 
  * @instructions
  * getCarInfoById takes two arguments:
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
@@ -183,8 +182,14 @@ function getLastCarInfo(inventory) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
+function getCarInfoById(/* code here */ inventory, id) {
   /* code here */
+  for (let i =0; i< inventory.length; i++){
+    if (inventory[i].id === id){
+      return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`
+    }
+  }
+
 }
 
 /**
@@ -195,8 +200,18 @@ function getCarInfoById(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
+function sortCarInventory(/* code here */ inventory) {
   /* code here */
+  return inventory.sort(function (a,b) {
+    let compare= 0
+    if(a.car_model > b.car_model){
+      compare= 1 
+    }
+    else if (a.car_model < b.car_model){
+      compare= -1
+    }
+    return compare
+  })
 }
 
 /**
